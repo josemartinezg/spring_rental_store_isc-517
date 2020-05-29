@@ -1,4 +1,4 @@
-package com.pucmm.spring_rental_store.repositories;
+package com.pucmm.spring_rental_store.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

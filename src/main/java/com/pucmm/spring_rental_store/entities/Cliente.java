@@ -1,4 +1,4 @@
-package com.pucmm.spring_rental_store.repositories;
+package com.pucmm.spring_rental_store.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table
-public class SubFamiliaEquipos implements Serializable {
+public class Cliente implements Serializable {
     @Id
     @GeneratedValue
     @Column
@@ -21,8 +21,10 @@ public class SubFamiliaEquipos implements Serializable {
     @Column
     private String nombre;
     @Column
-    private String descripcion;
+    private String apellido;
     @Column
-    @ManyToOne
-    private Set<FamiliaEquipo> familiaEquipo;
+    private String cedula;
+    @Column(name = "mis_alquileres")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Alquiler> misAlquileres;
 }
