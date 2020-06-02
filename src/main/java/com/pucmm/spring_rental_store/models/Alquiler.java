@@ -1,4 +1,4 @@
-package com.pucmm.spring_rental_store.repositories;
+package com.pucmm.spring_rental_store.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,18 +17,18 @@ import java.util.Set;
 public class Alquiler implements Serializable {
     @Id
     @GeneratedValue
-    @Column
     private long id;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private Cliente cliente;
+    private Estado estado;
     @Column(name = "fecha_alquiler")
     private Date fechaDeAlquiler;
     @Column(name = "fecha_devolucion_esperada")
     private Date fechaDevolucionEsperada;
     @Column(name = "fecha_devolucion_real")
     private Date fechaDevolcionReal;
-    @Column(name = "lista_equipos_rentados")
-    @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "alquiler", cascade = CascadeType.REMOVE)
     private Set<Equipo> listaDeEquiposRentados;
     @Column(name = "foto_perfil")
     private String fotoDePerfil;
-
 }

@@ -1,4 +1,4 @@
-package com.pucmm.spring_rental_store.repositories;
+package com.pucmm.spring_rental_store.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,17 +12,16 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name = "sub_familia_equipo")
 public class SubFamiliaEquipos implements Serializable {
     @Id
     @GeneratedValue
-    @Column
     private long id;
-    @Column
     private String nombre;
-    @Column
     private String descripcion;
-    @Column
+    @Column(name = "familia_equipo")
     @ManyToOne
-    private Set<FamiliaEquipo> familiaEquipo;
+    private FamiliaEquipo familiaEquipo;
+    @OneToMany(mappedBy = "sub_familia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Equipo> listaEquipos;
 }

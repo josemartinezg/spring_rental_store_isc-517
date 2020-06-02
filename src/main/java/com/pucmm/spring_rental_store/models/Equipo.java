@@ -1,4 +1,4 @@
-package com.pucmm.spring_rental_store.repositories;
+package com.pucmm.spring_rental_store.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,13 +16,9 @@ import java.util.Set;
 public class Equipo implements Serializable {
     @Id
     @GeneratedValue
-    @Column
     private long id;
-    @Column
     private String marca;
-    @Column
     private String modelo;
-    @Column
     private String descripcion;
     @Column(name="costo_alquiler_diario")
     private float costoAlquilerDiario;
@@ -30,8 +26,11 @@ public class Equipo implements Serializable {
     private String imagenEquipo;
     @Column(name="cantidad_existencia")
     private int cantidadEnExistencia;
-    @Column(name="lista_alquileres")
+    @ManyToMany(mappedBy = "equipos")
     private Set<Alquiler> listaDeAlquileres;
+    @Column(name="sub_familia")
+    @ManyToOne
+    private SubFamiliaEquipos subFamiliaDeEquipos;
 
     public int aumentarExistencia(){
         return 0;
