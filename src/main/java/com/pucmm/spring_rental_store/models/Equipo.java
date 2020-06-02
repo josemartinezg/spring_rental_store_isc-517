@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/main/java/com/pucmm/spring_rental_store/models/Equipo.java
 package com.pucmm.spring_rental_store.models;
+=======
+package com.pucmm.spring_rental_store.entities;
+>>>>>>> f0515efec41aaad2afeec70d32a2c5775e9bc668:src/main/java/com/pucmm/spring_rental_store/entities/Equipo.java
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
